@@ -9,7 +9,7 @@ template<typename T> std::string result(const CompressedData<T>& compressedData)
     return str.str();
 }
 
-TEST(compressDataTest1, isCorrect){
+TEST(compressDataTest, isCorrect1){
     Array2D<int> array = {{
         {0, 0, 0, 1, 1, 2, 3},
         {0, 0, 4, 4, 4, 2, 2},

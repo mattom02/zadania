@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "collision.hpp"
 
-TEST(trianglesCollision1, noCollision){
+TEST(trianglesCollision, noCollision1){
     vec2 p11(100, 300);
     vec2 p12(100, 500);
     vec2 p13(300, 400);
@@ -19,7 +19,7 @@ TEST(trianglesCollision1, noCollision){
     EXPECT_FALSE(isColliding(triangle1, triangle2));
 }
 
-TEST(trianglesCollision2, Collision){
+TEST(trianglesCollision, Collision1){
     vec2 p11(-8, 1);
     vec2 p12(-4, 1);
     vec2 p13(-6, 4);
@@ -37,7 +37,7 @@ TEST(trianglesCollision2, Collision){
     EXPECT_TRUE(isColliding(triangle1, triangle2));
 }
 
-TEST(trianglesCollision3, noCollision){
+TEST(trianglesCollision, noCollisio2n){
     vec2 p11(-9, -1);
     vec2 p12(-11, -2);
     vec2 p13(-8, -4);
@@ -55,7 +55,7 @@ TEST(trianglesCollision3, noCollision){
     EXPECT_FALSE(isColliding(triangle1, triangle2));
 }
 
-TEST(trianglesCollision4, SmallerInsideBigger){
+TEST(trianglesCollision, smallInsideBigger){
     vec2 p11(-4, -4);
     p11.x = -4;
     p11.y = -4;

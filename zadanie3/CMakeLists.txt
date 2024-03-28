@@ -32,8 +32,7 @@ FetchContent_Declare(googletest
         GIT_TAG        v1.14.0
 )
 
-FetchContent_MakeAvailable(SFML)
-FetchContent_MakeAvailable(googletest)
+FetchContent_MakeAvailable(SFML googletest)
 
 add_executable(zadanie3 ${SOURCE_FILES} main.cpp)
 add_executable(zadanie3_test src/collision.cpp ${SOURCE_FILES_TESTS})
