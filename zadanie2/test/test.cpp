@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "change.hpp"
+#include "Functions.hpp"
 
 TEST(calculateChange, properChange){
     size_t totalValue = 14;
@@ -29,4 +29,28 @@ TEST(calculateChange, valueReset){
     size_t totalValue = 20;
     calculateChange(10, totalValue);
     EXPECT_EQ(totalValue, 0);
+}
+
+TEST(buttonPress, notPressed1){
+    sf::Vector2i vector(10, 10);
+    bool buttonPressed = isButtonPressed(vector, 535, 465, 660, 590);
+    EXPECT_FALSE(buttonPressed);
+}
+
+TEST(buttonPress, Pressed1){
+    sf::Vector2i vector(500, 630);
+    bool buttonPressed = isButtonPressed(vector, 535, 465, 660, 590);
+    EXPECT_TRUE(buttonPressed);
+}
+
+TEST(buttonPress, notPressed2){
+    sf::Vector2i vector(21, 15);
+    bool buttonPressed = isButtonPressed(vector, 20, 10, 20, 10);
+    EXPECT_FALSE(buttonPressed);
+}
+
+TEST(buttonPress, Pressed2){
+    sf::Vector2i vector(69, 49);
+    bool buttonPressed = isButtonPressed(vector, 70, 30, 50, 30);
+    EXPECT_TRUE(buttonPressed);
 }

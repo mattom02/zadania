@@ -16,7 +16,7 @@ set(SOURCE_FILES
         src/WelcomePage.cpp
         src/TicketsPage.cpp
         src/TextPage.cpp
-        src/Change.cpp
+        src/Functions.cpp
         )
 
 set(SOURCE_FILES_TESTS
@@ -34,7 +34,7 @@ FetchContent_Declare(googletest
         GIT_TAG        v1.14.0)
 
 add_executable(zadanie2 ${SOURCE_FILES} main.cpp)
-add_executable(zadanie2_test src/Change.cpp ${SOURCE_FILES_TESTS})
+add_executable(zadanie2_test src/Functions.cpp ${SOURCE_FILES_TESTS})
 
 FetchContent_MakeAvailable(SFML googletest)
 
@@ -52,7 +52,7 @@ add_custom_command(
 )
 
 target_link_libraries(zadanie2 PRIVATE sfml-graphics)
-target_link_libraries(zadanie2_test gtest gtest_main)
+target_link_libraries(zadanie2_test gtest gtest_main sfml-graphics)
 target_compile_features(zadanie2 PRIVATE cxx_std_17)
 
 install(TARGETS zadanie2)

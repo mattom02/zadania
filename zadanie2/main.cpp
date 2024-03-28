@@ -1,12 +1,13 @@
 #include "WelcomePage.hpp"
 #include "TicketsPage.hpp"
 #include "TextPage.hpp"
-#include "Change.hpp"
+#include "Functions.hpp"
 #include <thread>
 #include <chrono>
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1000, 1000), "Ticket machine");
+
     sf::RectangleShape background(sf::Vector2f(950, 950));
     background.setPosition(sf::Vector2f(25, 25));
     background.setFillColor(sf::Color::Black);
@@ -20,6 +21,7 @@ int main() {
     TextPage errorPage("Twoje saldo jest niewystarczajace.", 260, 200);
     TextPage changePage("",200, 200);
     TextPage endPage("", 150, 200);
+
     sf::Event event;
 
     size_t currentPage = 0;
@@ -39,22 +41,22 @@ int main() {
                 sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
                 switch (currentPage){
                     case 0:
-                        if(mousePosition.x < 466 && mousePosition.x > 426 && mousePosition.y < 630 && mousePosition.y > 590){
+                        if(isButtonPressed(mousePosition, 466, 426, 630, 590)){
                             welcomePage.decreaseCurrentValue();
                         }
-                        else if(mousePosition.x < 519 && mousePosition.x > 479 && mousePosition.y < 630 && mousePosition.y > 590){
+                        else if(isButtonPressed(mousePosition, 519, 479, 630, 590)){
                             welcomePage.insertCurrentValue(totalValue);
                             ticketsPage.updateTotalValueText(totalValue);
                         }
-                        else if(mousePosition.x < 572 && mousePosition.x > 532 && mousePosition.y < 630 && mousePosition.y > 590){
+                        else if(isButtonPressed(mousePosition, 572, 532, 630, 590)){
                             welcomePage.increaseCurrentValue();
                         }
-                        else if(mousePosition.x < 910 && mousePosition.x > 800 && mousePosition.y < 575 && mousePosition.y > 475){
+                        else if(isButtonPressed(mousePosition, 910, 800, 575, 475)){
                             currentPage = 1;
                         }
                         break;
                     case 1:
-                        if(mousePosition.x < 200 && mousePosition.x > 90 && mousePosition.y < 575 && mousePosition.y > 475){
+                        if(isButtonPressed(mousePosition, 200, 90, 575, 475)){
                             if(totalValue != 0) {
                                 currentPage = 2;
                                 totalValue = 0;
@@ -66,19 +68,19 @@ int main() {
                             }
                         }
                         else {
-                            if (mousePosition.x < 485 && mousePosition.x > 415 && mousePosition.y < 460 && mousePosition.y > 390) {
+                            if (isButtonPressed(mousePosition, 485, 415, 460, 390)) {
                                 selectedTicket = 3;
                                 currentPage = 3;
-                            } else if (mousePosition.x < 485 && mousePosition.x > 415 && mousePosition.y < 560 && mousePosition.y > 490) {
+                            } else if (isButtonPressed(mousePosition, 485, 415, 560, 490)) {
                                 selectedTicket = 4;
                                 currentPage = 3;
-                            } else if (mousePosition.x < 585 && mousePosition.x > 515 && mousePosition.y < 460 && mousePosition.y > 390) {
+                            } else if (isButtonPressed(mousePosition, 585, 515, 460, 390)) {
                                 selectedTicket = 8;
                                 currentPage = 3;
-                            } else if (mousePosition.x < 585 && mousePosition.x > 515 && mousePosition.y < 560 && mousePosition.y > 490) {
+                            } else if (isButtonPressed(mousePosition, 585, 515, 560, 490)) {
                                 selectedTicket = 10;
                                 currentPage = 3;
-                            } else if (mousePosition.x < 535 && mousePosition.x > 465 && mousePosition.y < 660 && mousePosition.y > 590) {
+                            } else if (isButtonPressed(mousePosition, 535, 465, 660, 590)) {
                                 selectedTicket = 15;
                                 currentPage = 3;
                             }

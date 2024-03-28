@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <sstream>
+#include <array>
 
 class Page{
 public:
