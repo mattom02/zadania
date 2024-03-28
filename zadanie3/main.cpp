@@ -20,8 +20,8 @@ int main()
     triangle triangle2;
     triangle2.points = {p21, p22, p23};
 
-    Triangle Triangle1 = Triangle(triangle1);
-    Triangle Triangle2 = Triangle(triangle2);
+    Triangle Triangle1 = Triangle(triangle1, 1);
+    Triangle Triangle2 = Triangle(triangle2, 1);
 
     while (window.isOpen())
     {

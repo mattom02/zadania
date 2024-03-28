@@ -4,7 +4,7 @@
 
 class Triangle : public sf::Drawable{
 public:
-    explicit Triangle(triangle Triangle);
+    explicit Triangle(triangle Triangle, float Velocity);
 
     void moveLeft();
 
@@ -24,6 +24,7 @@ public:
 private:
     sf::VertexArray texture;
     triangle hitbox;
+    float velocity;
 
     void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 };

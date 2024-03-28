@@ -37,7 +37,7 @@ TEST(trianglesCollision, Collision1){
     EXPECT_TRUE(isColliding(triangle1, triangle2));
 }
 
-TEST(trianglesCollision, noCollisio2n){
+TEST(trianglesCollision, noCollision2){
     vec2 p11(-9, -1);
     vec2 p12(-11, -2);
     vec2 p13(-8, -4);
