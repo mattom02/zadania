@@ -22,6 +22,22 @@ TicketsPage::TicketsPage(){
     arrowHead[2].position = sf::Vector2f(90, 525);
 }
 
+void TicketsPage::setEnLanguage(const std::size_t &totalValue){
+    isLanguagePl = false;
+    formatText(mainText, 395, 200, "Select a ticket.");
+    std::stringstream str;
+    str << "Balance: " << std::to_string(totalValue);
+    formatText(totalValueText, 423, 300, str.str());
+}
+
+void TicketsPage::setPlLanguage(const std::size_t &totalValue){
+    isLanguagePl = true;
+    formatText(mainText, 270, 200, "Wybierz bilet ktory chcesz kupic.");
+    std::stringstream str;
+    str << "Saldo: " << std::to_string(totalValue);
+    formatText(totalValueText, 448, 300, str.str());
+}
+
 void TicketsPage::draw(sf::RenderTarget& target, sf::RenderStates state) const{
     for(const auto &i : box){
         target.draw(i, state);

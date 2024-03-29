@@ -15,5 +15,7 @@ public:
 
     sf::Font font;
 
+    bool isLanguagePl = true;
+
     sf::Text totalValueText;
 };

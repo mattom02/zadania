@@ -31,6 +31,8 @@ int main() {
     std::stringstream str;
     std::array<size_t, 3> change;
 
+    bool isLanguagePL = true;
+
     while (window.isOpen())
     {
         while (window.pollEvent(event))
@@ -54,18 +56,34 @@ int main() {
                         else if(isButtonPressed(mousePosition, 910, 800, 575, 475)){
                             currentPage = 1;
                         }
-                        break;
-                    case 1:
-                        if(isButtonPressed(mousePosition, 200, 90, 575, 475)){
+                        else if(isButtonPressed(mousePosition, 195, 95, 846, 796)){
                             if(totalValue != 0) {
                                 currentPage = 2;
                                 totalValue = 0;
                                 ticketsPage.updateTotalValueText(totalValue);
                                 welcomePage.updateTotalValueText(totalValue);
                             }
-                            else{
-                                currentPage = 0;
-                            }
+                        }
+                        else if(isButtonPressed(mousePosition, 842, 792, 846, 796)){
+                            isLanguagePL = false;
+                            welcomePage.setEnLanguage(totalValue);
+                            ticketsPage.setEnLanguage(totalValue);
+                            printPage.formatText(330, 200, "The ticket is being printed.");
+                            backPage.formatText(392, 200, "Returning money.");
+                            errorPage.formatText(290, 200,"You don't have enough balance.");
+                        }
+                        else if(isButtonPressed(mousePosition, 905, 855, 846, 796)){
+                            isLanguagePL = true;
+                            welcomePage.setPlLanguage(totalValue);
+                            ticketsPage.setPlLanguage(totalValue);
+                            printPage.formatText(280, 200, "Trwa proces drukowania biletu.");
+                            backPage.formatText(392, 200, "Oddaje monety.");
+                            errorPage.formatText(260, 200, "Twoje saldo jest niewystarczajace.");
+                        }
+                        break;
+                    case 1:
+                        if(isButtonPressed(mousePosition, 200, 90, 575, 475)){
+                            currentPage = 0;
                         }
                         else {
                             if (isButtonPressed(mousePosition, 485, 415, 460, 390)) {
@@ -119,11 +137,16 @@ int main() {
                 window.draw(errorPage);
                 window.display();
                 std::this_thread::sleep_for(std::chrono::seconds(3));
-                currentPage = 0;
+                currentPage = 1;
                 break;
             case 5:
                 str.str("");
-                str << "Bilet zostal wydrukowany, oto Twoja reszta:\n                     ";
+                if(isLanguagePL){
+                    str << "Bilet zostal wydrukowany, oto Twoja reszta:\n                     ";
+                }
+                else{
+                    str << "The ticket has been printed, take the change:\n                      ";
+                }
                 change = calculateChange(selectedTicket, totalValue);
                 str << change[0] << "*5 zl, " << change[1] << "*2 zl, " << change[2] << "*1 zl";
                 changePage.setString(str.str());
@@ -137,8 +160,14 @@ int main() {
                 break;
             case 6:
                 str.str("");
-                str << "Zycze milego dnia Twoj bilet ";
-                str << selectedTicket << " oczekuje na odbior.";
+                if(isLanguagePL) {
+                    str << "Zycze milego dnia, Twoj bilet ";
+                    str << selectedTicket << " oczekuje na odbior.";
+                }
+                else{
+                    str << "Have a nice day, your ticket ";
+                    str << selectedTicket << " is ready to be taken.";
+                }
                 endPage.setString(str.str());
                 window.draw(endPage);
                 window.display();

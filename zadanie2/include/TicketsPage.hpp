@@ -5,6 +5,10 @@
 class TicketsPage : public sf::Drawable, public Page{
 public:
     TicketsPage();
+
+    void setEnLanguage(const std::size_t &totalValue);
+
+    void setPlLanguage(const std::size_t &totalValue);
 private:
     sf::Text mainText;
 

@@ -2,9 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include "Page.hpp"
 
-class TextPage : public sf::Drawable, protected Page{
+class TextPage : public sf::Drawable, public Page{
 public:
     TextPage(std::string str, int x ,int y);
+
+    void formatText(int x, int y, std::string str);
 
     void setString(std::string str);
 private:

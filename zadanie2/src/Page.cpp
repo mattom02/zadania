@@ -21,7 +21,12 @@ void Page::formatBox(sf::RectangleShape &box, int x, int y, int sizeX, int sizeY
 
 void Page::updateTotalValueText(std::size_t value){
     std::stringstream str;
-    str << "Saldo: " << std::to_string(value);
+    if(isLanguagePl) {
+        str << "Saldo: " << std::to_string(value);
+    }
+    else{
+        str << "Balance: " << std::to_string(value);
+    }
     totalValueText.setString(str.str());
 }
 
